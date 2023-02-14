@@ -1,0 +1,57 @@
+# Hooks
+
+É onde deve ficar todos os hooks do projeto.
+
+## Padrões de Desenvolvimento.
+
+- Os hooks devem ser separados por pastas e devem ser nomeadas com `PascalCase`.
+
+- Cada pasta deverá conter os seguintes arquivos `index.tsx`, `index.mdx`, `index.test.tsx`.
+
+- Após a criação do hook deve imporar e exportar ele no index.ts na raiz da pasta `Hooks`, a ordem de importação deve ser feita em ordem alfabética. 
+
+## Exemplos de Arquivos
+
+### `index.mdx` (Documentação no Docz).
+
+É o arquivo de documentação do que será usado pelo Docz na hora de documentar o projeto.
+
+```md
+---
+name: MyHook
+route: /hooks/my-hook
+menu: Hooks
+---
+
+import { Props } from 'docz';
+import MyHook from '.';
+import Playground from '../Playground';
+
+# MyHook
+
+## Como utilizar
+
+import { useClock } from 'hooks';
+
+...
+
+const { hour, minute } = useClock(15, true);
+```
+
+### `index.test.tsx` (Testes unitários).
+
+É o arquivo de testes unitários dos hooks.
+
+```ts
+import { renderHook } from 'tests/CustomRender';
+
+import useHookName from '.';
+
+describe('useHookName', () => {
+	it('Testing render.', () => {
+		const { state } = renderHook<{}>(() => useHookName());
+	});
+});
+```
+
+Deve se utilizar os métodos do CustomRender em vez do testingLibary.

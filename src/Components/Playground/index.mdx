@@ -1,0 +1,54 @@
+---
+name: Playground
+route: /components/playground
+menu: Components
+---
+
+import { Props } from 'docz';
+
+import Playground from './index.tsx';
+
+# Playground
+
+## Componente
+
+Esse é o componente responsável por renderizar outros componentes dentro do `Docz`.
+
+```ts
+<Playground>
+	<Component />
+</Playground>
+```
+
+Caso seja preciso criar um componnete diretamente por ele, aqui vai um exemplo de como deve ser feito:
+
+```ts
+<Playground>
+	{() => {
+		return <Component />;
+	}}
+</Playground>
+```
+
+Espaços dentro da função irá retornar um erro dentro do `Docz`.
+
+```ts
+<Playground>
+	{() => {
+		const [myState, setMyState] = React.useState(null);
+
+		return <Component />;
+	}}
+</Playground>
+```
+
+Essa seria uma forma correta de replicar o código acima:
+
+```ts
+<Playground>
+	{() => {
+		const [myState, setMyState] = React.useState(null);
+		return <Component />;
+	}}
+</Playground>
+```

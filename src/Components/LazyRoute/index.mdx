@@ -1,0 +1,50 @@
+---
+name: LazyRoute
+route: /components/lazy-route
+menu: Components
+---
+
+import { Props } from 'docz';
+
+import LazyRoute from './index.tsx';
+import Playground from '../Playground/index.tsx';
+
+# LazyRoute
+
+## Componente
+
+Esse componente é responsável por fazer o carregamento otimizado das rotas utiliza o `React.Suspense`.
+
+Ele deve receber o componente que será usado na rota definida como `children`.
+
+<Playground>
+	<LazyRoute>
+		{() => {
+			return <div>Minha Página</div>;
+		}}
+	</LazyRoute>
+</Playground>
+
+## Uso com Routes
+
+É preciso utilizar o `React.lazy` para fazer a importação do arquivo que deverá ser carregado na rota em questão.
+
+```ts
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import { LazyRoute } from 'Components';
+
+const MyRoutes: React.FC = () => {
+	return (
+		<Routes>
+			<Route
+				path='/my-path'
+				element={<LazyRoute component={React.lazy(() => import('./my-page'))}
+			/>
+		</Routes>
+	);
+};
+
+export default MyRoutes;
+```

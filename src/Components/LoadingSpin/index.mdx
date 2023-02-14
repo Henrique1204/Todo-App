@@ -1,0 +1,33 @@
+---
+name: LoadingSpin
+route: /components/loading-spin
+menu: Components
+---
+
+import { useState } from 'react';
+import { Props } from 'docz';
+
+import LoadingSpin from './index.tsx';
+import Playground from '../Playground/index.tsx';
+
+# LoadingSpin
+
+## Propriedades
+
+<Props of={LoadingSpin} />
+
+## Componente
+
+<Playground>
+	{() => {
+		const [loading, setLoading] = useState(false);
+    const onClick = () => {
+      setLoading(true);
+      setTimeout(() => setLoading(false), 2000);
+    };
+		return <>
+      <button onClick={onClick}>Mostrar Loading Spin</button>
+      <LoadingSpin loading={loading} />
+    </>;
+	}}
+</Playground>

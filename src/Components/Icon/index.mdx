@@ -1,0 +1,38 @@
+---
+name: Icon
+route: /components/icon
+menu: Components
+---
+
+import { Props } from 'docz';
+
+import Icon from './index.tsx';
+import Playground from '../Playground/index.tsx';
+
+# Icon
+
+## Propriedades
+
+<Props of={Icon} />
+
+## Componente
+
+<Playground>
+	<Icon icon='github-icon' size={32} />
+</Playground>
+
+## Exemplo de `paletteColors`.
+
+Por enquanto não temos palette configurada, porém ela deveria receber uma string/enum com o nome de uma das chaves do seu objeto `colors` configurado no objeto de theme.
+
+<Playground>
+	<Icon icon='github-icon' size={32} paletteColors="" />
+</Playground>
+
+## Exemplo de `color`.
+
+Ele deve receber um cor diretamente, que pode estar ou não dentro do seu tema definido.
+
+<Playground>
+	<Icon icon='github-icon' size={32} color="#F00" />
+</Playground>
