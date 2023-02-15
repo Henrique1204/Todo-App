@@ -24,7 +24,7 @@ const AllIconsContainer: React.FC = () => {
 
 describe('<Icon />', () => {
 	it('Testing render.', () => {
-		render(<Icon testId='test-icon' icon='github-icon' />);
+		render(<Icon testId='test-icon' icon='cross' />);
 
 		const iconElement = screen.getByTestId('test-icon');
 
@@ -42,12 +42,7 @@ describe('<Icon />', () => {
 		const mockColor = '#F00';
 
 		render(
-			<Icon
-				testId='test-icon'
-				icon='github-icon'
-				size={mockSize}
-				color={mockColor}
-			/>
+			<Icon testId='test-icon' icon='cross' size={mockSize} color={mockColor} />
 		);
 
 		const iconElement = screen.getByTestId('test-icon');
