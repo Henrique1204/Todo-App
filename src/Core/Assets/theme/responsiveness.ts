@@ -1,4 +1,4 @@
-import { FlattenSimpleInterpolation } from 'styled-components';
+import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 export const mobile = {
 	minWidth: 0,
@@ -15,11 +15,19 @@ export const desktop = {
 };
 
 export const min = (min: number, data: FlattenSimpleInterpolation) => {
-	return `@media only screen and (min-width: ${min}px) {${data}}`;
+	return css`
+		@media only screen and (min-width: ${min}px) {
+			${data}
+		}
+	`;
 };
 
 export const max = (max: number, data: FlattenSimpleInterpolation) => {
-	return `@media only screen and (max-width: ${max}px) {${data}}`;
+	return css`
+		@media only screen and (max-width: ${max}px) {
+			${data}
+		}
+	`;
 };
 
 export const custom = (
@@ -27,5 +35,9 @@ export const custom = (
 	max: number,
 	data: FlattenSimpleInterpolation
 ) => {
-	return `@media only screen and (min-width: ${min}px and max-width: ${max}px) {${data}}`;
+	return css`
+		@media only screen and (min-width: ${min}px and max-width: ${max}px) {
+			${data}
+		}
+	`;
 };

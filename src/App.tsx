@@ -10,9 +10,9 @@ import { GlobalStyle } from './App.styled';
 const App: React.FC = () => {
 	return (
 		<>
-			<GlobalStyle />
-
 			<ThemeProvider theme={theme}>
+				<GlobalStyle />
+
 				<Routes />
 			</ThemeProvider>
 		</>

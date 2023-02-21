@@ -1,4 +1,10 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
+
+import desktopDarkBg from './Core/Assets/images/bg-desktop-dark.jpg';
+import mobileDarkBg from './Core/Assets/images/bg-mobile-dark.jpg';
+
+import desktopLightBg from './Core/Assets/images/bg-desktop-light.jpg';
+import mobileLightBg from './Core/Assets/images/bg-mobile-light.jpg';
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -52,5 +58,47 @@ export const GlobalStyle = createGlobalStyle`
 
   button, a {
     cursor: pointer;
+  }
+
+  body.lightMode {
+    ${({
+			theme: {
+				palette: { lightMode },
+				screens,
+				breakpoints,
+			},
+		}) => css`
+			background: ${`${lightMode.veryLightest} url('${desktopLightBg}') no-repeat`};
+			background-size: 100% 300px;
+
+			${screens.max(
+				breakpoints.mobile.maxWidth,
+				css`
+					background: ${`${lightMode.veryLightest} url('${mobileLightBg}') no-repeat`};
+					background-size: 100% 200px;
+				`
+			)}
+		`}
+  }
+
+  body.darkMode {
+    ${({
+			theme: {
+				palette: { darkMode },
+				screens,
+				breakpoints,
+			},
+		}) => css`
+			background: ${`${darkMode.veryDarkest} url('${desktopDarkBg}') no-repeat`};
+			background-size: 100% 300px;
+
+			${screens.max(
+				breakpoints.mobile.maxWidth,
+				css`
+					background: ${`${darkMode.veryDarkest} url('${mobileDarkBg}') no-repeat`};
+					background-size: 100% 200px;
+				`
+			)}
+		`}
   }
 `;
