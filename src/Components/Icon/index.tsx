@@ -6,6 +6,7 @@ import * as Styles from './index.styled';
 
 export interface IICon extends React.IDefaultProps, Styles.IContainerProps {
 	icon: IconsListEnum;
+	onClick?: () => void;
 }
 
 const Icon: React.FC<IICon> = ({

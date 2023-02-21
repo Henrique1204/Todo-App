@@ -12,6 +12,7 @@ export const primary = {
 	main: '#3A7BFD',
 	backgroundLinearPrimary: '#56DDFF',
 	backgroundLinearSecondary: '#BF58F3',
+	white: '#FFF',
 };
 
 export const lightMode = {

@@ -60,6 +60,27 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
+  body {
+    padding: 5.5rem 1.5rem 4.25rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ${({ theme }) =>
+			theme.screens.max(
+				theme.breakpoints.mobile.maxWidth,
+				css`
+					padding: 3rem 1.5rem 6rem;
+				`
+			)}
+  }
+
+  #root {
+    width: 100%;
+    max-width: 540px;
+  }
+
   body.lightMode {
     ${({
 			theme: {
