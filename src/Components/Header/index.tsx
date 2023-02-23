@@ -9,13 +9,29 @@ const Header: React.FC<React.IDefaultProps> = () => {
 
 	const hanldeToggleTheme = () => {
 		const body = document.querySelector('body')!;
+		const isDarkMode = body.classList.contains('darkMode');
 
-		setIsDarkMode(body.classList.toggle('darkMode'));
+		if (!isDarkMode) {
+			body.classList.remove('lightMode');
+			body.classList.add('darkMode');
+		} else {
+			body.classList.remove('darkMode');
+			body.classList.add('lightMode');
+		}
+
+		setIsDarkMode((prevState) => !prevState);
 	};
 
 	React.useEffect(() => {
-		document.querySelector('body')?.classList.add('lightMode');
+		const theme = window.localStorage.getItem('theme');
+
+		setIsDarkMode(theme === 'darkMode');
+		document.querySelector('body')?.classList.add(theme || 'lightMode');
 	}, []);
+
+	React.useEffect(() => {
+		window.localStorage.setItem('theme', isDarkMode ? 'darkMode' : 'lightMode');
+	}, [isDarkMode]);
 
 	return (
 		<Styles.Container>
