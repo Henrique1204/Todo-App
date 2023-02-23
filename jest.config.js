@@ -4,16 +4,16 @@ module.exports = {
 	transformIgnorePatterns: ['/*.png/'],
 	setupFilesAfterEnv: ['<rootDir>/src/Tests/setupTests.ts'],
 	transform: {
-		'^.+\\.(ts|tsx)?$': 'ts-jest',
+		'^.+\\.(ts|tsx)?$': [
+			'ts-jest',
+			{
+				tsconfig: 'jest.tsconfig.json',
+			},
+		],
 		'^.+\\.(js|jsx)$': 'babel-jest',
 		'\\.svg': '<rootDir>/src/@mocks/svgMock.js',
 	},
 	testEnvironment: 'jsdom',
-	globals: {
-		'ts-jest': {
-			tsconfig: 'jest.tsconfig.json',
-		},
-	},
 	collectCoverage: true,
 	collectCoverageFrom: [
 		'src/**/*.tsx',
@@ -23,8 +23,8 @@ module.exports = {
 	],
 	coverageReporters: ['lcov', 'json'],
 	moduleNameMapper: {
-		'^Mocks(.*)$': '<rootDir>/src/@mocks/$1',
-		'^Types(.*)$': '<rootDir>/src/@types/$1',
+		'^@mocks(.*)$': '<rootDir>/src/@mocks/$1',
+		'^@types(.*)$': '<rootDir>/src/@types/$1',
 		'^Components(.*)$': '<rootDir>/src/Components/$1',
 		'^Contexts(.*)$': '<rootDir>/src/Contexts/$1',
 		'^Core(.*)$': '<rootDir>/src/Core/$1',
